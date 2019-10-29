@@ -23,6 +23,7 @@ class NotificationController {
   }
 
   async update(req, res) {
+    // Todo mudar isto para  findByPk  e testar depois
     const userNotification = await Notification.findById(req.params.id);
 
     if (userNotification.user !== req.userId) {
