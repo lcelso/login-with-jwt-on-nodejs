@@ -7,6 +7,8 @@ import Appointment from '../app/models/Appointment';
 
 import databaseConfig from '../config/database';
 
+require('dotenv').config();
+
 const models = [User, File, Appointment];
 
 class Database {
@@ -24,14 +26,11 @@ class Database {
   }
 
   mongo() {
-    this.mongoConnection = mongoose.connect(
-      'mongodb://localhost:27017/gobarber',
-      {
-        useNewUrlParser: true,
-        useFindAndModify: false,
-        useUnifiedTopology: true,
-      }
-    );
+    this.mongoConnection = mongoose.connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useFindAndModify: false,
+      useUnifiedTopology: true,
+    });
   }
 }
 
